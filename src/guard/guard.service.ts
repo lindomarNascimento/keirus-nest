@@ -3,6 +3,7 @@ import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { UserInterface, UserModel } from 'src/service/user/user.repository';
 import { jwtConstants } from './contants';
+import console from 'console';
 
 @Injectable()
 export class GuardService {
@@ -11,7 +12,7 @@ export class GuardService {
   ) { }
 
   async signIn(email: string, passoword: string):
-    Promise<{ token: string, email: string }> {
+    Promise<{ token: string, email: string, firstName: string, typeUser: string }> {
     const isUserValid = await UserModel.findOne({ email });
 
     if (!isUserValid?.id) throw new UnauthorizedException();
@@ -32,6 +33,8 @@ export class GuardService {
     return {
       token: access_token,
       email: res.email,
+      firstName: res.firstName,
+      typeUser: res.typeUser
     };
   }
 
@@ -48,8 +51,6 @@ export class GuardService {
           secret: jwtConstants.secret
         }
       );
-      // 💡 We're assigning the payload to the request object here
-      // so that we can access it in our route handlers
       request['user'] = payload;
     } catch {
       throw new UnauthorizedException();

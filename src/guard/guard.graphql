@@ -6,6 +6,8 @@ input LoginUserInput {
 type Guard{
   token: String,
   email: String,
+  firstName: String,
+  typeUser: String,
 }
 
 type Query {
