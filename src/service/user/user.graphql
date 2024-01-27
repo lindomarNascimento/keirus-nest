@@ -1,0 +1,45 @@
+type LoginUser {
+  email: String,
+  password: String,
+}
+
+type User {
+  ID: String,
+  firstName: String,
+  lastName: String,
+  email: String,
+  avatar: String,
+  createAt: String,
+  updatedAt: String,
+  lastAcess: String,
+  typeUser: String
+}
+ 
+ input UserInput {
+  firstName: String,
+  lastName: String,
+  email: String,
+  password: String,
+  avatar: String
+}
+
+input PostUserInput {
+  ID: String,
+  userInput: UserInput
+}
+
+input LoginUserInput {
+ email: String,
+  password: String,
+}
+
+type Query {
+  user(loginUser:LoginUserInput): User
+  getUsers: [User]
+}
+
+type Mutation {
+  createUser(userInput: UserInput): User
+   deleteUser(id: String): Boolean
+   updateUser(userInput: PostUserInput): Boolean
+}
