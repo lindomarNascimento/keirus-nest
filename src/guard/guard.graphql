@@ -1,0 +1,13 @@
+input LoginUserInput {
+  email: String,
+  password: String,
+}
+
+type Guard{
+  token: String,
+  email: String,
+}
+
+type Query {
+  signIn(loginUser:LoginUserInput): Guard
+}

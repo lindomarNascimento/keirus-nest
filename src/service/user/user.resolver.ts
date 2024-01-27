@@ -2,17 +2,11 @@ import { Args, Mutation, Query, Resolver } from "@nestjs/graphql";
 import { UserService } from "src/service/user/user.service";
 import { UpdateUser, UserInterface } from "./user.repository";
 
-
 @Resolver('User')
 export class UserResolver {
   constructor(
     private userService: UserService
   ) { }
-
-  @Query()
-  async user(@Args('loginUser') { email, password }) {
-    return this.userService.user({ email, password })
-  }
 
   @Query()
   async getUsers() {

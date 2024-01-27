@@ -7,6 +7,7 @@ import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin
 import { UserModule } from './service/user/user.module';
 import { databaseProviders } from './mongoose/mongoose';
 import { ConfigModule } from '@nestjs/config';
+import { GuardModule } from './guard/guard.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { ConfigModule } from '@nestjs/config';
       isGlobal: true,
     }),
     UserModule,
+    GuardModule,
   ],
   controllers: [AppController],
   providers: [...databaseProviders, AppService],
