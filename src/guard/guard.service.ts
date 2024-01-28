@@ -3,7 +3,15 @@ import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { UserInterface, UserModel } from 'src/service/user/user.repository';
 import { jwtConstants } from './contants';
-import console from 'console';
+
+export interface ResLogin {
+  token: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  typeUser: string;
+  id: string;
+}
 
 @Injectable()
 export class GuardService {
@@ -12,7 +20,7 @@ export class GuardService {
   ) { }
 
   async signIn(email: string, passoword: string):
-    Promise<{ token: string, email: string, firstName: string, typeUser: string, id: string }> {
+    Promise<ResLogin> {
     const isUserValid = await UserModel.findOne({ email });
 
     if (!isUserValid?.id) throw new UnauthorizedException();
@@ -34,6 +42,7 @@ export class GuardService {
       token: access_token,
       email: res.email,
       firstName: res.firstName,
+      lastName: res.lastName,
       typeUser: res.typeUser,
       id: res.ID,
     };
