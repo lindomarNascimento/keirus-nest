@@ -11,6 +11,10 @@ export interface ResLogin {
   lastName: string;
   typeUser: string;
   id: string;
+  avatar: string,
+  createAt: string,
+  updatedAt: string,
+  lastAcess: string,
 }
 
 @Injectable()
@@ -45,6 +49,10 @@ export class GuardService {
       lastName: res.lastName,
       typeUser: res.typeUser,
       id: res.ID,
+      avatar: res.avatar,
+      createAt: res.createAt,
+      updatedAt: res.updatedAt,
+      lastAcess: res.lastAcess,
     };
   }
 

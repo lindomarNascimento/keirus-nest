@@ -9,7 +9,11 @@ type Guard{
   firstName: String,
   typeUser: String,
   id: String,
-  lastName: String
+  lastName: String,
+  avatar: String,
+  createAt: String,
+  updatedAt: String,
+  lastAcess: String,
 }
 
 type Query {
