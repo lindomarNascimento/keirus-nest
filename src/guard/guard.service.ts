@@ -12,7 +12,7 @@ export class GuardService {
   ) { }
 
   async signIn(email: string, passoword: string):
-    Promise<{ token: string, email: string, firstName: string, typeUser: string }> {
+    Promise<{ token: string, email: string, firstName: string, typeUser: string, id: string }> {
     const isUserValid = await UserModel.findOne({ email });
 
     if (!isUserValid?.id) throw new UnauthorizedException();
@@ -34,7 +34,8 @@ export class GuardService {
       token: access_token,
       email: res.email,
       firstName: res.firstName,
-      typeUser: res.typeUser
+      typeUser: res.typeUser,
+      id: res.ID,
     };
   }
 

@@ -8,6 +8,7 @@ type Guard{
   email: String,
   firstName: String,
   typeUser: String,
+  id: String,
 }
 
 type Query {
