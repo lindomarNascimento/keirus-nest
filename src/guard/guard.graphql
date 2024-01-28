@@ -9,7 +9,7 @@ type Guard{
   firstName: String,
   typeUser: String,
   id: String,
-  lastName: string;
+  lastName: String
 }
 
 type Query {
