@@ -9,7 +9,7 @@ type User {
   lastName: String,
   email: String,
   avatar: String,
-  createAt: String,
+  createdAt: String,
   updatedAt: String,
   lastAcess: String,
   typeUser: String

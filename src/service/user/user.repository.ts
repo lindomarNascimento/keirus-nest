@@ -36,7 +36,7 @@ export const UserSchema = new Schema({
   email: String!,
   password: String!,
   avatar: String,
-  createAt: String,
+  createdAt: String,
   updatedAt: String,
   lastAcess: String,
   typeUser: String
